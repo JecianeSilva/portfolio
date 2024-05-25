@@ -1,40 +1,32 @@
 "use client"
 
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
+import { Link } from "../Link/Link"
 
 interface NavbarProps { }
 
 export function Navbar({ ...rest }: NavbarProps) {
+
+  const listOptionsNavBar = [
+    { id: 1, label: "Home", href: "#home" },
+    { id: 2, label: "Sobre min", href: "#about-me" },
+    { id: 3, label: "Projetos", href: "#projects" },
+    { id: 4, label: "Experiência", href: "#experience" },
+    { id: 5, label: "Contato", href: "#contact" },
+  ]
+
   return (
-    <NavigationMenu.Root>
-      <NavigationMenu.List className="flex items-center gap-8">
-        <NavigationMenu.Item className="border-b-4 border-transparent text-slate-400 py-4 hover:text-white hover:border-b-4 hover:border-sky-300">
-          <NavigationMenu.Link>
-            {/* <Link href={"#about"}>Sobre</Link> */}
-            Sobre
-          </NavigationMenu.Link>
-        </NavigationMenu.Item>
-
-        <NavigationMenu.Item className="border-b-4 border-transparent text-slate-400 py-4 hover:text-white hover:border-b-4 hover:border-sky-300">
-          <NavigationMenu.Link>
-            {/* <Link href={"#skill"}>Skills</Link> */}
-            Skills
-          </NavigationMenu.Link>
-        </NavigationMenu.Item>
-
-        <NavigationMenu.Item className="border-b-4 border-transparent text-slate-400 py-4 hover:text-white hover:border-b-4 hover:border-sky-300">
-          <NavigationMenu.Link>
-            {/* <Link href={"#projects"}>Projetos</Link> */}
-            Projetos
-          </NavigationMenu.Link>
-        </NavigationMenu.Item>
-
-        <NavigationMenu.Item className="border-b-4 border-transparent text-slate-400 py-4 hover:text-white hover:border-b-4 hover:border-sky-300">
-          <NavigationMenu.Link>
-            {/* <Link href="#contact">Contato</Link> */}
-            Contato
-          </NavigationMenu.Link>
-        </NavigationMenu.Item>
+    <NavigationMenu.Root {...rest}>
+      <NavigationMenu.List className="flex items-center gap-8 py-2">
+        {listOptionsNavBar.map((item) => {
+          return (
+            <NavigationMenu.Item key={item.id}>
+              <NavigationMenu.Link asChild>
+                <Link href={item.href} label={item.label} />
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          )
+        })}
       </NavigationMenu.List>
     </NavigationMenu.Root>
   )

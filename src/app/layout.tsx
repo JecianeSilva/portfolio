@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, La_Belle_Aurore } from "next/font/google";
+import { Poppins, Satisfy } from "next/font/google";
 import "./globals.css";
 
 const Poppins_Sans_Serif = Poppins({
@@ -8,10 +8,10 @@ const Poppins_Sans_Serif = Poppins({
   variable: "--font-poppins",
 })
 
-const La_Belle_Aurore_Regular = La_Belle_Aurore({
+const satisfy = Satisfy({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-la-belle-aurore-regular",
+  variable: "--font-Satisfy",
 })
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${Poppins_Sans_Serif.variable} ${La_Belle_Aurore_Regular.variable}`}
+      className={`${Poppins_Sans_Serif.variable} ${satisfy.variable}`}
     >
       <body>{children}</body>
     </html>

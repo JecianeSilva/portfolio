@@ -10,7 +10,11 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-poppins)"],
-        cursive: ["var(--font-la-belle-aurore-regular)"],
+        cursive: ["var(--font-Satisfy)"],
+      },
+      fontSize: {
+        "3.5xl": "2rem", /* 32px */
+        "5.5xl": "3.5rem",
       },
       colors: {
         white: "#FFFFFF",
@@ -121,7 +125,10 @@ const config: Config = {
           900: '#242628',
           950: '#07001c',
         },
-      }
+      },
+      maxWidth: {
+        content: "1180px",
+      },
     },
   },
   plugins: [],
