@@ -11,11 +11,18 @@ import { loadSlim } from "@tsparticles/slim";
 import { SocialMedia } from "../../components/SocialMedia/SocialMedia"
 
 import backgroundImage from "../../assets/imagens/bg-resume.webp"
+import { GithubLogo, InstagramLogo, LinkedinLogo } from "phosphor-react";
 
 interface ResumeProps { }
 
 export function Resume({ ...rest }: ResumeProps) {
   const [initAnimation, setInitAnimation] = useState(false);
+
+  const listSocialMedia = [
+    { id: 1, href: "https://github.com/jecianeSilva", icon: GithubLogo },
+    { id: 2, href: "https://www.linkedin.com/in/jeciane-amorim-056513184/", icon: LinkedinLogo },
+    { id: 3, href: "https://www.instagram.com/jeciane.dev", icon: InstagramLogo },
+  ]
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -36,7 +43,7 @@ export function Resume({ ...rest }: ResumeProps) {
           value: "rgba(7, 0, 28, 0.1)",
         },
       },
-      fpsLimit: 150,
+      fpsLimit: 250,
       interactivity: {
         events: {
           onClick: {
@@ -45,16 +52,20 @@ export function Resume({ ...rest }: ResumeProps) {
           },
           onHover: {
             enable: true,
-            mode: "repulse",
+            mode: "grab",
           },
         },
         modes: {
           push: {
             quantity: 4,
           },
-          repulse: {
-            distance: 200,
-            duration: 0.4,
+          grab: {
+            distance: 400,
+            links: {
+              blink: false,
+              consent: false,
+              opacity: 1
+            }
           },
         },
       },
@@ -101,41 +112,58 @@ export function Resume({ ...rest }: ResumeProps) {
     [],
   );
 
-  return (
-    <section
-      id="#home"
-      className="relative overflow-hidden bg-dark bg-cover bg-no-repeat"
-      style={{
-        backgroundImage: `url("${backgroundImage.src}")`,
-        backgroundPosition: "center",
-        backgroundSize: "auto 740px",
-        height: "740px",
-      }}
-    >
-      {initAnimation &&
+  if (initAnimation) {
+    return (
+      <section
+        id="#home"
+        className="relative overflow-hidden bg-dark bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: `url("${backgroundImage.src}")`,
+          backgroundPosition: "center",
+          backgroundSize: "auto 740px",
+          height: "740px",
+        }}
+      >
+
         <Particles
           id="tsparticles"
           particlesLoaded={particlesLoaded}
           options={options}
           className="w-full h-full"
-        />}
-      <div
-        className="absolute bottom-0 left-0 right-0 top-0 h-full w-full flex justify-center overflow-hidden p-8">
-        <div className="flex h-full w-full max-w-content items-center max-w-[1180px] pb-16">
-          <div className="max-w-[544px] ">
-            <p className="text-2xl text-slate-300 mb-4">
-              Olá 👋🏾, meu nome é
-            </p>
-            <h1 className="font-cursive text-5.5xl text-sky-500  mb-8">
-              Jeciane Amorim
-            </h1>
-            <p className="text-lg text-slate-300 mb-8">
-              Sou <span className="text-sky-300 font-semibold">Desenvolvedora Frontend</span>, e gostaria de apresentar meu trabalho e um pouco mais sobre mim, através deste portfólio.
-            </p>
-            <SocialMedia />
+        />
+        <div
+          className="absolute bottom-0 left-0 right-0 top-0 h-full w-full flex justify-center overflow-hidden p-8">
+          <div className="flex h-full w-full max-w-content items-center max-w-[1180px] pb-16">
+            <div className="max-w-[544px] ">
+              <p className="text-2xl text-slate-300 mb-4">
+                Olá 👋🏾, meu nome é
+              </p>
+              <h1 className="font-cursive text-5.5xl text-sky-500  mb-8">
+                Jeciane Amorim
+              </h1>
+              <p className="text-lg text-slate-300 mb-8">
+                Sou <span className="text-sky-300 font-semibold">Desenvolvedora Frontend</span>, e gostaria de apresentar meu trabalho e um pouco mais sobre mim, através deste portfólio.
+              </p>
+              <div className="flex mt-12 gap-12">
+
+                {listSocialMedia.map((item) => (
+                  <SocialMedia key={item.id} listSocialMedia={item} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+      </section>
+    )
+  }
+  return (
+    <div className="relative overflow-hidden bg-dark h-screen">
+      <div
+        className="absolute bottom-0 left-0 right-0 top-0 h-full w-full flex justify-center overflow-hidden p-8">
+        <div className="flex max-w-content items-center max-w-[1180px] pb-16">
+          <span className="loading text-white loading-dots loading-lg"></span>
+        </div>
       </div>
-    </section>
+    </div>
   )
 }
