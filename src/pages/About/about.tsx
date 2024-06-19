@@ -7,7 +7,7 @@ export function About({ ...rest }: AboutProps) {
   return (
     <div className="bg-white h-full w-full pt-24 pb-20 px-8">
       <div className="flex max-w-content w-full h-full mx-auto">
-        <div className="relative min-w-[384px] mr-20">
+        <div className="animate-fade-in-up relative min-w-[384px] mr-24">
           <Image className="relative z-10" src={backgroundImage} alt="Jeciane Amorim" width={384} height={560} />
           <div className="absolute bottom-10 left-10 min-w-[384px] min-h-[560px] border-4 border-sky-400"></div>
         </div>

@@ -129,6 +129,49 @@ const config: Config = {
       maxWidth: {
         content: "1180px",
       },
+      keyframes: {
+        "animar-cursor": {
+          "0%": {
+            color: "#0199b9",
+          },
+          "100%": {
+            color: "#000",
+          }
+        },
+        "fade-in-up": {
+          "0%": {
+            opacity: '0',
+            transform: "translate3d(0, 100%, 0)",
+          },
+          "100%": {
+            opacity: '1',
+            transform: "translate3d(0, 0, 0)",
+          },
+        },
+        "fade-in-bounceup": {
+          "0%": {
+            opacity: '0',
+            transform: "translate3d(0%, 100%, 0)",
+          },
+          "33%": {
+            opacity: '0.5',
+            transform: "translate3d(0%, 0%, 0)",
+          },
+          "66%": {
+            opacity: '0.7',
+            transform: "translate3d(0%, 20%, 0)",
+          },
+          "100%": {
+            opacity: '1',
+            transform: "translate3d(0, 0, 0)",
+          },
+        },
+      },
+      animation: {
+        "animar-cursor": "animar-cursor .8s infinite",
+        "fade-in-up": 'fade-in-up 1s ease-in-out 0.25s 1',
+        "fade-in-bounceup": 'fade-in-bounceup 1s ease-in-out 0.25s 1',
+      }
     },
   },
   plugins: [
