@@ -1,19 +1,17 @@
-"use client"
+"use client";
 
-import * as NavigationMenu from "@radix-ui/react-navigation-menu"
-import { Link } from "../Link/Link"
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { Link } from "../Link/Link";
 
-interface NavbarProps { }
+interface NavbarProps {}
 
 export function Navbar({ ...rest }: NavbarProps) {
-
   const listOptionsNavBar = [
     { id: 1, label: "Home", href: "#home" },
-    { id: 2, label: "Sobre min", href: "#about-me" },
-    { id: 3, label: "Projetos", href: "#projects" },
-    { id: 4, label: "Experiência", href: "#experience" },
-    { id: 5, label: "Contato", href: "#contact" },
-  ]
+    { id: 2, label: "Projetos", href: "/projetos" },
+    { id: 3, label: "Experiência", href: "/" },
+    { id: 4, label: "Contato", href: "/contate" },
+  ];
 
   return (
     <NavigationMenu.Root {...rest}>
@@ -25,9 +23,9 @@ export function Navbar({ ...rest }: NavbarProps) {
                 <Link href={item.href} label={item.label} />
               </NavigationMenu.Link>
             </NavigationMenu.Item>
-          )
+          );
         })}
       </NavigationMenu.List>
     </NavigationMenu.Root>
-  )
+  );
 }
