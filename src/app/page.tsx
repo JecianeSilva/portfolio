@@ -5,7 +5,6 @@ import { About } from "../pages/About/about";
 export default function Home() {
   return (
     <main className="bg-dark text-slate-200">
-      <Header />
       <Resume />
       <About />
     </main>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Satisfy } from "next/font/google";
+import { Header } from "@/components/Header/Header"
+import { twMerge } from "@/utils/twMerge"
 import "./globals.css";
 
 const Poppins_Sans_Serif = Poppins({
@@ -29,7 +31,14 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${Poppins_Sans_Serif.variable} ${satisfy.variable}`}
     >
-      <body>{children}</body>
+      <body
+      className={twMerge(
+        "bg-slate-950 text-slate-100 relative",
+      )}
+      >
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

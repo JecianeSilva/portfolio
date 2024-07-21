@@ -36,7 +36,7 @@ export function Link({
   ...rest
 }: LinkProps) {
   return (
-    <LinkPrimitive prefetch={false} className={link({ variant })} {...rest}>
+    <LinkPrimitive prefetch={false} className={link({ variant, className })}{...rest}>
       {label}
     </LinkPrimitive>
   )
